@@ -19,10 +19,11 @@ def get_filters():
     (str) month - name of the month to filter by, or "all" to apply no month filter
     (str) day - name of the day of week to filter by, or "all" to apply no day filter
   """
-  print('Hello! Let\'s explore some US bikeshare data!')
+
+  print("Hello! Let's explore some US bikeshare data!")
 
   while True:
-    city = input("Type city: ")
+    city = input('Type city: ')
     if city.lower() in CITY_DATA:
       city = city.lower()
       break
@@ -30,7 +31,7 @@ def get_filters():
       print("\nYou have typed an invalid city. Please type one of 'chicago', 'new york city' or 'washington'\n")
 
   while True:
-    month = input("Type month: ")
+    month = input('Type month: ')
     if month.lower() in months:
       month = month.lower()
       break
@@ -38,7 +39,7 @@ def get_filters():
       print("\nYou have typed an invalid month. Please type one of 'january', 'february', 'march', 'april', 'may', 'june' or 'all'\n")
 
   while True:
-    day = input("Type day: ")
+    day = input('Type day: ')
     if day.lower() in days:
       day = day.lower()
       break
@@ -73,7 +74,6 @@ def load_data(city, month, day):
   # filter by month if applicable
   if month != 'all':
     # use the index of the months list to get the corresponding int
-    months = ['january', 'february', 'march', 'april', 'may', 'june']
     month_index = months.index(month) + 1
 
     # filter by month to create the new dataframe
@@ -94,15 +94,15 @@ def time_stats(df):
   start_time = time.time()
 
   most_common_month = months[df['Month'].mode()[0] - 1]
-  print("Most common month: {}\n".format(most_common_month.title()))
+  print('Most common month: {}\n'.format(most_common_month.title()))
 
   most_common_day = df['Day of Week'].mode()[0]
-  print("Most common day of the week: {}\n".format(most_common_day))
+  print('Most common day of the week: {}\n'.format(most_common_day))
 
   most_common_hour = df['Start Time'].dt.hour.mode()[0]
-  print("Most common start hour: {}\n".format(most_common_hour))
+  print('Most common start hour: {}\n'.format(most_common_hour))
 
-  print("\nThis took %s seconds." % (time.time() - start_time))
+  print('\nThis took %s seconds.' % (time.time() - start_time))
   print('-'*40)
 
 
@@ -113,15 +113,15 @@ def station_stats(df):
   start_time = time.time()
 
   most_common_start_station = df['Start Station'].mode()[0]
-  print("Most commonly used start station: {}\n".format(most_common_start_station))
+  print('Most commonly used start station: {}\n'.format(most_common_start_station))
 
   most_common_end_station = df['End Station'].mode()[0]
-  print("Most commonly used end station: {}\n".format(most_common_end_station))
+  print('Most commonly used end station: {}\n'.format(most_common_end_station))
 
   most_common_combination_stations = df.groupby(['End Station','Start Station']).size().idxmax()
-  print("Most frequent combination of start and end stations respectively: {}\n".format(most_common_combination_stations))
+  print('Most frequent combination of start and end stations respectively: {}\n'.format(most_common_combination_stations))
   
-  print("\nThis took %s seconds." % (time.time() - start_time))
+  print('\nThis took %s seconds.' % (time.time() - start_time))
   print('-'*40)
 
 
@@ -132,12 +132,12 @@ def trip_duration_stats(df):
   start_time = time.time()
 
   total_travel_time = df['Trip Duration'].sum()
-  print("Total travel time: {}\n".format(total_travel_time))
+  print('Total travel time: {}\n'.format(total_travel_time))
 
   mean_travel_time = df['Trip Duration'].mean()
-  print("Average travel time: {}\n".format(mean_travel_time))
+  print('Average travel time: {}\n'.format(mean_travel_time))
 
-  print("\nThis took %s seconds." % (time.time() - start_time))
+  print('\nThis took %s seconds.' % (time.time() - start_time))
   print('-'*40)
 
 
@@ -148,25 +148,25 @@ def user_stats(df):
   start_time = time.time()
 
   user_types = df['User Type'].value_counts()
-  print("Counts of user types:\n{}\n".format(user_types.to_string()))
+  print('Counts of user types:\n{}\n'.format(user_types.to_string()))
 
   try:
     gender = df['Gender'].value_counts()
-    print("Counts of gender:\n{}\n".format(gender.to_string()))
+    print('Counts of gender:\n{}\n'.format(gender.to_string()))
   except KeyError:
-    print("No gender data available for Washington\n")
+    print('No gender data available for Washington\n')
 
   try:
     earliest_year_of_birth = df['Birth Year'].min()
-    print("Earliest year of birth: {}\n".format(earliest_year_of_birth))
+    print('Earliest year of birth: {}\n'.format(earliest_year_of_birth))
     most_recent_year_of_birth = df['Birth Year'].max()
-    print("Most recent year of birth: {}\n".format(most_recent_year_of_birth))
+    print('Most recent year of birth: {}\n'.format(most_recent_year_of_birth))
     most_common_year_of_birth = df['Birth Year'].mode()[0]
-    print("Most common year of birth: {}\n".format(most_common_year_of_birth))
+    print('Most common year of birth: {}\n'.format(most_common_year_of_birth))
   except KeyError:
-    print("No year of birth data available for Washington\n")
+    print('No year of birth data available for Washington\n')
 
-  print("\nThis took %s seconds." % (time.time() - start_time))
+  print('\nThis took %s seconds.' % (time.time() - start_time))
   print('-'*40)
 
 def view_raw_data(df):
@@ -174,22 +174,22 @@ def view_raw_data(df):
   rows = 0
   NUMBER_OF_ROWS_OF_DATA = 5
   while True:
-    view_data = input("\nWould you like to see the raw data? Enter 'Yes' or 'No'.\n")
-    if view_data.lower() != "yes":
-      break
-    # this piece of code runs if response is 'yes'
-    if (rows >= df.shape[0]):
-      print("\nNo more data to display")
-      break
+    view_data = input("\nWould you like to see the raw data? Enter 'yes' or 'no'.\n")
+    if view_data.lower() == 'yes':
+      if (rows >= df.shape[0]):
+        print('\nNo more data to display')
+        break
       
-    current_five_rows_of_data = df.iloc[rows: rows + NUMBER_OF_ROWS_OF_DATA]
-    
-    start_time = time.time()
-    print("Printing five rows of raw data:\n{}\n".format(current_five_rows_of_data))
-    rows += NUMBER_OF_ROWS_OF_DATA
-    
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+      current_five_rows_of_data = df.iloc[rows: rows + NUMBER_OF_ROWS_OF_DATA]
+      
+      start_time = time.time()
+      print('Printing five rows of raw data:\n{}\n'.format(current_five_rows_of_data))
+      rows += NUMBER_OF_ROWS_OF_DATA
+      
+      print('\nThis took %s seconds.' % (time.time() - start_time))
+      print('-'*40)
+
+    else: break
             
 
 def main():
@@ -202,10 +202,10 @@ def main():
     trip_duration_stats(df)
     user_stats(df)
     view_raw_data(df)
-    restart = input('\nWould you like to restart? Enter yes or no.\n')
+    restart = input("\nWould you like to restart? Enter 'yes' or 'no'.\n")
     if restart.lower() != 'yes':
       break
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	main()
