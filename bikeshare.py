@@ -174,21 +174,21 @@ def view_raw_data(df):
   NUMBER_OF_ROWS_OF_DATA = 5
   while True:
     view_data = input("\nWould you like to see the raw data? Enter 'yes' or 'no'.\n")
-    if view_data.lower() != 'yes':
-      break
-    # this piece of code runs if response is 'yes'
-    if (rows >= df.shape[0]):
-      print('\nNo more data to display')
-      break
+    if view_data.lower() == 'yes':
+      if (rows >= df.shape[0]):
+        print('\nNo more data to display')
+        break
       
-    current_five_rows_of_data = df.iloc[rows: rows + NUMBER_OF_ROWS_OF_DATA]
-    
-    start_time = time.time()
-    print('Printing five rows of raw data:\n{}\n'.format(current_five_rows_of_data))
-    rows += NUMBER_OF_ROWS_OF_DATA
-    
-    print('\nThis took %s seconds.' % (time.time() - start_time))
-    print('-'*40)
+      current_five_rows_of_data = df.iloc[rows: rows + NUMBER_OF_ROWS_OF_DATA]
+      
+      start_time = time.time()
+      print('Printing five rows of raw data:\n{}\n'.format(current_five_rows_of_data))
+      rows += NUMBER_OF_ROWS_OF_DATA
+      
+      print('\nThis took %s seconds.' % (time.time() - start_time))
+      print('-'*40)
+
+    else: break
             
 
 def main():
