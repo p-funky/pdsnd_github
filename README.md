@@ -12,9 +12,16 @@ descriptive statistics. We also write a script that takes in raw input to create
 experience in the terminal to present these statistics.
 
 ### Files used
-bikeshare.py
-.gitignore
+- bikeshare.py
+- .gitignore
+
+### How ro run
+- From your terminal navigate to the folder housing the project
+- Enter `python bikeshare.py`
+- Follow the prompts and provide valid responses as hinted by the prompt
+- See the results 😉
 
 ### Credits
 Udacity's Programming for Data Science with Python Nanodegree Program - https://classroom.udacity.com/nanodegrees/nd104-ent/dashboard/overview
+
 
